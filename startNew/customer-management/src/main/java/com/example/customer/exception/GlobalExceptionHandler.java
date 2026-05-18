@@ -1,0 +1,42 @@
+package com.example.customer.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	 @ExceptionHandler(
+		       CustomerAlreadyExistsException.class)
+		    public ResponseEntity<ErrorResponse>
+		    handleCustomerExistsException(
+		       CustomerAlreadyExistsException ex) {
+
+		        ErrorResponse response
+		           = new ErrorResponse(
+		                 HttpStatus.CONFLICT.value(),
+		                 ex.getMessage());
+
+		        return new ResponseEntity<>(
+		                response,
+		                HttpStatus.CONFLICT);
+		    }
+
+		    @ExceptionHandler(
+		       NoSuchCustomerExistsException.class)
+		    public ResponseEntity<ErrorResponse>
+		    handleNoCustomerException(
+		       NoSuchCustomerExistsException ex) {
+
+		        ErrorResponse response
+		           = new ErrorResponse(
+		                 HttpStatus.NOT_FOUND.value(),
+		                 ex.getMessage());
+
+		        return new ResponseEntity<>(
+		                response,
+		                HttpStatus.NOT_FOUND);
+		    }
+
+}

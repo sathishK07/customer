@@ -1,0 +1,12 @@
+package com.example.customer.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.customer.model.Customer;
+
+@Service
+public interface CustomerService {
+	Customer saveCustomer(Customer customer);
+	Customer getCustomer(int id);
+
+}

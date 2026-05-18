@@ -1,0 +1,27 @@
+package com.example.customer.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.customer.model.Customer;
+import com.example.customer.repository.CustomerRepository;
+
+public class CustomerServiceImpl implements CustomerService {
+	@Autowired
+    private CustomerRepository repository;
+
+	@Override
+	public Customer saveCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		if(repository.findById(customer.getId()).isPresent()) {
+			
+		}
+		return repository.save(customer);
+	}
+
+	@Override
+	public Customer getCustomer(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
