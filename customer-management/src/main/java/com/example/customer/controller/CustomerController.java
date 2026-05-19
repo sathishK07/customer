@@ -16,7 +16,7 @@ import com.example.customer.service.CustomerService;
 public class CustomerController {
 	@GetMapping("/welcome")
 	public String welcome() {
-		return "welcome to customer";
+		return "welcome to customer service";
 	}
 	
 	@Autowired
